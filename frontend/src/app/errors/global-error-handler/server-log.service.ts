@@ -1,0 +1,21 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { ServerLog } from './server-log';
+import { environment } from 'src/environments/environment';
+
+const API = environment.ServerLog;
+
+@Injectable({
+    providedIn: 'root'
+})
+export class ServerLogService {
+
+    constructor(private http: HttpClient) {
+
+    }
+
+    log(serverlog: ServerLog) {
+     return   this.http.post(API + '/infra/log',serverlog);
+    }   
+
+}
